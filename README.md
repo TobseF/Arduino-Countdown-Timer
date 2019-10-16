@@ -13,25 +13,33 @@ The code runs on an [Arduino](https://www.arduino.cc/) compatible [Adafruit Feat
 It controls a [SparkFun 7-Segment Serial Display](https://www.sparkfun.com/products/11441).
 So wee don't need to manual control each segment. Instead serial data can be sent. 
 
-
-
 ## 🔌 Endpoints
 
 |    Name   |Method|  Param  |                      Description                        |
 |:---------:|:----:|:-------:|---------------------------------------------------------|
-|  `start`  | POST |time [ms]| Starts the countdown timer with the given time.         |
-|  `stop`   | POST |time [ms]| Stops the countdown timer and displays the finish time. |
+|  `start`  | GET |time [ms]| Starts the countdown timer with the given time.         |
+|  `stop`   | GET |time [ms]| Stops the countdown timer and displays the finish time. |
 |  `resume` | GET  |    -    | Restarts the countdown.                                 |
 | `disable` | GET  |    -    | Deactivates the timer, so all lights are off.           |
 
 ## 🔧 Setup
-Open the `timer.ino` in the [Arduino IDE](https://www.arduino.cc/en/Main/Software).   
-Change the variables `ssid` and `password` to match your W-LAN credentials.
 
-Connect the the Feather board with the 7-Segment Serial Display. Add a 5V power supply.
-
-| Feather - PIN | Connect | 7 Segment - PIN |
-|:-------------:|:-------:|:---------------:|
-|    **VCC**    |   ⟷    |     **USB**     |
-|    **GND**    |   ⟷    |     **GND**     |
-|    **RX**     |   ⟷    |     **16**      |
+1. Install [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+2. [Setup the Arduino IDE for the Adafruit Feather HUZZAH](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide)
+3. Install the `aREST` lib:  
+   _Tools_ > _Manage Libraries.._ Search & install `aREST` (v2.7.5 by Marco Schwartz)
+4. Open the `timer.ino` in the [Arduino IDE](https://www.arduino.cc/en/Main/Software).   
+5. Change the variables `ssid` and `password` to match your W-LAN credentials.
+6. _Verify_, _Compile_ & _Upload_ the sketch to the board.
+6. Connect the the _Feather board_ with the _7-Segment Serial Display_. Add a 5V power supply:  
+   The timer shows "Connecting" and "Ready" after connecting to a WLAN.
+  
+  | Feather - PIN | Connect | 7 Segment - PIN |
+  |:-------------:|:-------:|:---------------:|
+  |    **VCC**    |   ⟷    |     **USB**     |
+  |    **GND**    |   ⟷    |     **GND**     |
+  |    **RX**     |   ⟷    |     **16**      |
+  
+  
+  
+8. Test the timer by sending a `GET` to it's IP with `start?time=120000`.
