@@ -8,6 +8,8 @@ This countdown timer is part of an [**ExitGame**](https://github.com/TobseF/its-
 The timer runs a second based countdown in the format "00:00".  
 The countdown can be controlled by a REST interface.  
 
+![7-Segment-Image](https://raw.githubusercontent.com/TobseF/Arduino-Countdown-Timer/gh-pages/images/7-segment-countdown.gif)
+
 ## 💡 Hardware
 The code runs on an [Arduino](https://www.arduino.cc/) compatible [Adafruit Feather HUZZAH with ESP8266](https://www.adafruit.com/product/2821).  
 It controls a [SparkFun 7-Segment Serial Display](https://www.sparkfun.com/products/11441).
